@@ -26,17 +26,17 @@ public class GNodeUtil{
 	}
 	
 	public ArrayList<ArrayList<GNode>> paths(GNode node){
-		return dfs2(node);
+		return findPaths(node);
 	}
 
-	private ArrayList<ArrayList<GNode>> dfs2(GNode node){
+	private ArrayList<ArrayList<GNode>> findPaths(GNode node){
 		path.add(node);		
 		GNode[] gnodes = node.getChildren();
 		if(gnodes.length == 0){
 			listOfPaths.add((ArrayList<GNode>) path.clone());
 		}
 		for(GNode gnode : gnodes){
-			listOfPaths = dfs2(gnode);
+			listOfPaths = findPaths(gnode);
 		}			
 		path.remove(node);
 		return listOfPaths;
